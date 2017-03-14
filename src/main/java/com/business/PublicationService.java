@@ -1,15 +1,17 @@
 package com.business;
 
+import com.repository.PostRepositoryInt;
+
 import java.util.List;
 
 /**
  * Created by vincentdemilly on 13/03/2017.
  */
-public class PublicationService {
+public class PublicationService implements PublicationServiceInt {
 
-    private PostRepository pr;
+    private PostRepositoryInt pr;
 
-    public PublicationService(PostRepository prr) {
+    public PublicationService(PostRepositoryInt prr) {
         this.pr = prr;
     }
 
@@ -20,5 +22,4 @@ public class PublicationService {
     public List<Post> fetchAll() {
         return pr.findAll();
     }
-
 }

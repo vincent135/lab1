@@ -1,8 +1,11 @@
 package com.view;
 
 import com.business.Post;
-import com.business.PostRepository;
+import com.config.ApplicationConfig;
+import com.repository.PostRepositoryInt;
 import com.business.PublicationService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
 
@@ -15,15 +18,13 @@ public class Main
 
     public static void main(String[] args) {
 
-        PostRepository pr = new PostRepository();
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ApplicationConfig.class);
 
-        System.out.println("Coucou Polytech");
-        PublicationService ps = new PublicationService(pr);
+        PublicationService publicationService= applicationContext.getBean(PublicationService.class);
+        Post post = new Post("Luminy est coool");
+        publicationService.post(post);
 
-        Post post = new Post("Luminy est cool");
-        ps.post(post);
-
-        List<Post> posts = ps.fetchAll();
+        List<Post> posts = publicationService.fetchAll();
         System.out.println(posts);
     }
 }
