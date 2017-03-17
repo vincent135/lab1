@@ -1,10 +1,20 @@
 package com.business;
 
+import javax.persistence.*;
+
 /**
  * Created by vincentdemilly on 13/03/2017.
  */
+@Entity
+@Table(name="POST")
 public class Post {
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(name = "CONTENT")
     private String content;
 
     public Post() {

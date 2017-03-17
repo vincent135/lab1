@@ -1,13 +1,5 @@
 package com.web;
 
-import com.business.Post;
-import com.config.ApplicationConfig;
-import com.business.PublicationService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import java.util.List;
-
 /**
  * Created by vincentdemilly on 13/03/2017.
  */

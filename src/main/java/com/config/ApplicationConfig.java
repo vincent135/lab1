@@ -1,17 +1,18 @@
 package com.config;
 
-import com.repository.JdbcPostRepository;
-import com.repository.PostRepositoryInt;
-import com.business.PublicationService;
-import com.business.PublicationServiceInt;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+import javax.persistence.Entity;
 import javax.sql.DataSource;
 
 
@@ -22,6 +23,7 @@ import javax.sql.DataSource;
 @Configuration
 @PropertySource("classpath:applications.properties")
 @ComponentScan(basePackages = "com")
+@EntityScan("com.business")
 public class ApplicationConfig {
 
     /*@Bean
@@ -77,5 +79,25 @@ public class ApplicationConfig {
                 .addScript("insert-user.sql")
                 .build();
     }
+
+  /*  @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
+                                                                       JpaVendorAdapter jpaVendorAdapter) {
+        LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
+        emfb.setDataSource(dataSource);
+        emfb.setJpaVendorAdapter(jpaVendorAdapter);
+        emfb.setPackagesToScan("com.models");
+        return emfb;
+    }
+
+    @Bean
+    public JpaVendorAdapter jpaVendorAdapter() {
+        HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+        adapter.setDatabase(Database.H2);
+        adapter.setShowSql(true);
+        adapter.setGenerateDdl(false);
+        adapter.setDatabasePlatform("org.hibernate.dialect.HSQLDialect");
+        return adapter;
+    }*/
 }
 
