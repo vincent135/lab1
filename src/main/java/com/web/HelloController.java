@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -33,7 +34,8 @@ public class HelloController {
     }*/
 
     @RequestMapping(value = "/share", method = RequestMethod.POST)
-    public String share(Post post) {
+    public String share(Post post, Principal principal) {
+        String name = principal.getName();
         publicationService.post(post);
         return "redirect:/feed";
     }

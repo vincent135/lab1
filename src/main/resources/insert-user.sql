@@ -1,0 +1,2 @@
+INSERT INTO USERS (username, password, enabled) VALUES ('admin', '$2a$10$cxhlfuLS78WTrRhIqbXExuPJl4JltlHixzsJCaKxHd1nIAe1vsYxe', 1)
+INSERT INTO AUTHORITIES (username, authority) VALUES ('admin', 'USER')
